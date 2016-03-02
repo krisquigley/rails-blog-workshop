@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  expose(:post)
+  expose(:post, finder: :find_by_slug)
   expose(:posts)
 
   def show
@@ -12,6 +12,10 @@ class PostsController < ApplicationController
   end
 
   def create
+    post = Post.new(post_params)
+    if post.save!
+      redirect_to post
+    end
   end
 
   def edit
