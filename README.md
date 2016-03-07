@@ -47,3 +47,7 @@ In this workshop you will be required to build the following functionality:
     - Form with a Name input field
   - Edit
     - Shows same form as New but with values pre-filled
+
+## Extension
+- Alert user of changes, i.e. adding post, updating post, deleting post
+- Move errors and alerts into partials
