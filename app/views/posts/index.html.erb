@@ -1,0 +1,15 @@
+<% if flash[:notice] %>
+	<div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<%= link_to 'Add Post', new_post_path, class: 'btn btn-primary' %>
+
+<ul>
+	<% posts.each do |post| %>
+		<li>
+			<%= link_to post.title, post_path(post) %> - <% post.published %>
+			<%= link_to "Edit", edit_post_path(post), class: "btn btn-default" %>
+			<%= link_to("Delete", post_path(post), method: :delete, class: "btn btn-default") %>
+		</li>
+	<% end %>
+</ul>

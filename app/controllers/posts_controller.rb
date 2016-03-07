@@ -14,6 +14,7 @@ class PostsController < ApplicationController
 
   def create
     if post.save
+      flash.notice = "#{post.title} post created"
       redirect_to post 
     else
       render :new
@@ -21,19 +22,28 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if post.save
+      flash.notice = "#{post.title} post updated"
+    else 
+      flash.notice = "#{post.title} Could not save. Please throw computer at wall."
+    end
   end
 
   def update
     if post.save
+      flash.notice = "#{post.title} post updated"
       redirect_to post 
     else
+      flash.notice = "#{post.title} Could not save. Please throw computer at wall."
       render :edit
     end
   end
 
   def destroy
     post.destroy
-
+    if post.destroy
+      flash.notice = "#{post.title} post deleted"
+    end
     redirect_to posts_path
   end
 

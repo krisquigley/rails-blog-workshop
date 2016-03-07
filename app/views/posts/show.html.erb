@@ -1,0 +1,6 @@
+<h1><%= post.title %></h1>
+<%= post.body %><br>
+<hr>
+Date: <%= post.created_at.strftime("%d/%m/%y at %H:%M") %> / <%= change_timestamp(post) %> <br>
+Category: <%= post.category_id %><br> <!-- Need to make this name -->
+Published: <%= post.published %><br>
