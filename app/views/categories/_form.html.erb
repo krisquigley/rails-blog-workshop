@@ -1,10 +1,12 @@
-<% category.errors.full_messages.each do |msg| %>
-     <div class="alert alert-warning fade in"> <%= msg %></div>
+<!-- if the field is empty show the error message -->
+<% category.errors.full_messages.each do |message| %>
+     <div class="alert alert-danger"> <%= message %></div>
 <% end %>
+
 <%= form_for category do |f| %>
   <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control"%>
+    <%= f.text_field :name, class: "form-control", required: true%>
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

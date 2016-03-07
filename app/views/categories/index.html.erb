@@ -1,9 +1,13 @@
 <ul>
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+  <% end %>
+
   <% categories.each do |category|  %>
     <li>
       <%= link_to category.name, category_path(category) %> 
       <%= link_to 'Edit Category', edit_category_path(category), class: 'btn btn-primary' %> 
-      <%= link_to 'Delete Category', category_path(category), method: :delete, class: 'btn btn-primary' %>
+      <%= link_to 'Delete Category', category_path(category), method: :delete, class: 'btn btn-primary', data: {confirm: "Are you sure you want to delete #{category.name}?"} %>
     </li>
 
   <% end %>  

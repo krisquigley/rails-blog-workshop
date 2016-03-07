@@ -1,0 +1,22 @@
+<ul>
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% posts.each do |post|  %>
+    <li>
+      <%= link_to post.title, post_path(post) %> 
+       <% if post.category %>
+      - <%= post.category.name %>
+      <% else %>
+        - No Category
+      <% end %>
+      <%= link_to 'Edit Post', edit_post_path(post), class: 'btn btn-primary' %> 
+      <%= link_to 'Delete Post', post_path(post), method: :delete, class: 'btn btn-primary', data: {confirm: "Are you sure you want to delete #{post.title}?"} %>
+    </li>
+
+  <% end %>  
+</ul>
+
+<%= link_to 'Add Post', new_post_path, class: 'btn btn-primary' %>
+

@@ -7,6 +7,7 @@ class CategoriesController < ApplicationController
 
   def create
     if category.save
+      flash[:notice] = "Category Successfully Created - #{category.name}"
       redirect_to categories_path
     else
       render :new
@@ -20,10 +21,12 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+      
   end
 
   def update
     if category.save
+      flash[:notice] = "Category Edited - #{category.name}"
       redirect_to categories_path
     else
       render :edit
@@ -31,9 +34,10 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    category.destroy
-    
-    redirect_to categories_path
+    if category.destroy
+      flash[:notice] = "Category Deleted - #{category.name}"
+      redirect_to categories_path
+    end
   end
 
   private
