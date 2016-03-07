@@ -1,0 +1,11 @@
+<h1>Category Posts</h1>
+<ul>
+  <% if !category.posts.present? %>
+    <p>No Posts</p>
+  <% end %>
+  <% category.posts.each do |post|  %>
+    <%= post.title %>
+  <% end %>  
+
+</ul>
+
