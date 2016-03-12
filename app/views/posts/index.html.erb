@@ -6,6 +6,13 @@
   <% posts.each do |post|  %>
     <li>
       <%= link_to post.title, post_path(post) %> 
+      
+      <% if post.published %>
+        Published
+      <% else %>
+        not published
+      <% end %>
+
        <% if post.category %>
       - <%= post.category.name %>
       <% else %>

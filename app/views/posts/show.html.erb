@@ -1,4 +1,11 @@
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
 <h1>Post - <%= post.title %></h1>
 <%= post.body %>
 Created at <%= post.created_at.strftime("%d/%m/%y at %H:%M") %>
 <%= post_change_timestamp(post) %>
+
+<%= render 'comments/comments', collection: @comments %>
+
+<%= render 'comments/new', locals: {post: @post} %>

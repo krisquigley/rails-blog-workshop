@@ -1,0 +1,18 @@
+<% if post.comments.present? %>
+  <h2>Comments</h2>
+  <ul>
+    <% if flash[:notice] %>
+      <div class="alert alert-success"><%= flash[:notice] %></div>
+    <% end %>
+
+    <% post.comments.each do |comment|  %>
+      <li>
+       <%= comment.name %>
+      </li>
+
+    <% end %>  
+  </ul>
+<% else %>
+  <h2>No Comments</h2>
+<% end %>
+

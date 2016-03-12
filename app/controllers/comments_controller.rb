@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     post.comments.build(comment_params)
     if post.save
+      flash[:notice] = "Comment Successfully Created"
       redirect_to post
     else
       render :new
@@ -19,6 +20,7 @@ class CommentsController < ApplicationController
 
   def update
     if comment.save
+      flash[:notice] = "Comment Successfully Updated"
       redirect_to post
     else
       render :edit
@@ -26,9 +28,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment.destroy
-
-    redirect_to post
+    if comment.destroy
+      flash[:notice] = "Comment Successfully Deleted"
+      redirect_to post
   end
 
   private
