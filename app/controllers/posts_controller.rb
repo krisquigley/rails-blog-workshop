@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   expose(:post, finder: :find_by_slug, attributes: :post_params)
   expose(:posts)
+  expose(:categories)
   expose(:comment) { post.comments.build }
 
   def show
