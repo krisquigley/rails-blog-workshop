@@ -1,0 +1,23 @@
+<section> 
+	<%= render 'shared/flash_messages', flash: flash %> 
+	<div>
+		<h5 class='pull-left'> Here are the posts created so far</h5>
+		<%= link_to 'create post', new_post_path, class:'btn-lg btn-primary pull-right' %>
+	</div>
+	<br/><br/>
+	
+	<!-- listing the posts if available -->
+	<% if posts.length>0 %>
+		<% posts.each do |post| %>
+			<div>
+				<%= link_to post.title, post_path(post), class:'col-xs-12' %>
+				<span>
+					<%= link_to 'edit', {action: :edit, id: post}, class:'btn-xs btn-primary'%>
+					<%= link_to 'delete', {action: :destroy, id: post}, class:'btn-xs btn-danger', method: :delete,  data: { confirm: 'Are you sure in deleting this post', action: :destroy } %>
+				</span>
+			</div>	
+		<% end %>
+	<% else %>
+		<%= 'Sorry no posts available' %>	
+	<% end %>
+</section>

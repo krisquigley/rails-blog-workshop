@@ -1,1 +1,12 @@
 <%= link_to 'Add Category', new_category_path, class: 'btn btn-primary' %>
+
+<% categories.each do |category| %>
+	<div>
+		<%= link_to category.name, {action: :show, id: category} %>
+		<span>
+			<%= link_to 'edit', {action: :edit, id: category}, class:'btn-xs btn-primary'%>
+			<%= link_to 'delete', {action: :destroy, id: category}, class:'btn-xs btn-danger', method: :delete,  data: { confirm: 'Are you sure in deleting this', action: :destroy } %>
+		</span>
+	</div>	
+
+<% end %>	

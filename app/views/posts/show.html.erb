@@ -1,0 +1,22 @@
+<section>
+	<%= render 'shared/flash_messages', flash: flash %> 
+	<div>
+		<div class="label label-warning">  
+			Category Name:
+			<%=  post.category.name %>
+		</div>
+		<br/>
+		<div class="label label-warning"> 
+			Published :
+			<%= post.published %>
+		</div>
+		<br/><br/>
+		<h5> Title: <%= post.title%> </h5>
+		<p> Content: <%= post.body %> </p>
+	</div>
+	<!-- Listing all the available comments -->
+	<%= render './comments/comments' , collection: @comments %>
+	<!-- Adding comments to the posts -->
+	<%= render './comments/new' , collection: post.comments %>
+
+</section>
