@@ -8,8 +8,10 @@ class CommentsController < ApplicationController
   def create
     post.comments.build(comment_params)
     if post.save
+      flash[:success] = "Comment saved successfully."
       redirect_to post
     else
+      flash[:error] = "Sorry! An error has occurred in creation of your comment."
       render :new
     end
   end

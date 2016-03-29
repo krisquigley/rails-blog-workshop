@@ -1,13 +1,22 @@
 <section>
+	<%= render 'shared/flash_messages', flash: flash %> 
 	<div>
-		<%= post.inspect %>
-		<span class="label label-default">  Category Id
-			<%=  post.category_id %>
-		</span>
-		<span class="label label-default"> Published
+		<div class="label label-warning">  
+			Category Name:
+			<%=  post.category.name %>
+		</div>
+		<br/>
+		<div class="label label-warning"> 
+			Published :
 			<%= post.published %>
-		</span>
+		</div>
+		<br/><br/>
+		<h5> Title: <%= post.title%> </h5>
+		<p> Content: <%= post.body %> </p>
 	</div>
-	<h5> <%= post.title%> </h5>
-	<p> <%= post.body %> </p>
+	<!-- Listing all the available comments -->
+	<%= render './comments/comments' , collection: @comments %>
+	<!-- Adding comments to the posts -->
+	<%= render './comments/new' , collection: post.comments %>
+
 </section>

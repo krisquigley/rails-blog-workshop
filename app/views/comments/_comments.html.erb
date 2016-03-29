@@ -1,0 +1,23 @@
+<% if post.comments.length>0 %>
+	<h5> Comments </h5>
+	<% post.comments.each  do |comment|%>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+			    <h3 class="panel-title">
+			    	<%= comment.name %>
+			    </h3>
+			</div>
+		  	<div class="panel-body">
+		    	<%= comment.body %>
+		  	</div>
+		  	<div class="panel-footer">
+		  		Created on: <%= comment.created_at.strftime("%d/%m/%y at %H:%M") %>
+		  	</div>
+		</div>
+	<% end %>
+<% else %>
+	<i class="text-info">
+		<%= 'No Comments made so far' %>
+		<br/><br/>	 
+	</i>	
+<% end %>
